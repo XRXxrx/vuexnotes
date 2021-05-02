@@ -1,28 +1,43 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    store的属性：{{ $store.state.count }}
+    <hr />
+    计算属性：{{ name }}
+    <hr />
+    辅助函数 :{{ count }}
+    <hr />
+    点击数据切换：{{ this.$store.state.count }}
+    <button @click="changeinfo">点击</button>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// 导入mapState
+import { mapState } from "vuex";
+// 采用数组形式引入state属性
+console.log(mapState(["count", "name"]));
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  name: "App",
+  mounted() {
+    console.log(this.$store);
+  },
+  computed: {
+    name() {
+      return this.$store.state.name;
+    },
+    // 传入数组指定需要映射的字段
+    // 将结果用...合并到原来的计算属性中
+    // 利用延展运算符将导出的状态映射给计算属性
+    ...mapState(["count", "name"]),
+  },
+  methods: {
+    changeinfo() {
+      this.$store.state.count++;
+    },
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
