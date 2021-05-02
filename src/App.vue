@@ -16,10 +16,16 @@
     <button @click="asyadd(12)">定时器2</button>
     <hr />
     <button @click="astadd(12)">定时器3</button>
+    <hr />
+    getters属性:{{ $store.getters.filterList }}
+    <hr />
+    <div>{{ getSchoolName }}</div>
   </div>
 </template>
 
 <script>
+//导入mapGetters
+import { mapGetters } from "vuex";
 //导入mapActions
 import { mapActions } from "vuex";
 //导入mapMutations
@@ -42,6 +48,7 @@ export default {
     // 将结果用...合并到原来的计算属性中
     // 利用延展运算符将导出的状态映射给计算属性
     ...mapState(["count", "name"]),
+    ...mapGetters(["filterList", "getSchoolName"]),
   },
   // methods: {
   //   add(data) {

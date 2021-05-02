@@ -15,7 +15,14 @@ const store = new Vuex.Store({
     // state存放数据状态
     state: {
         count: 2432,
-        name: 'adadsa'
+        name: 'adadsa',
+        list: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+        user: {
+            token: 'djdngf',
+            userinfo: {
+                schoolname: 'djnsnsndvnsdlkn'
+            }
+        }
     },
     //用来修改state的同步函数
     mutations: {
@@ -30,6 +37,11 @@ const store = new Vuex.Store({
                 store.commit('add', data)
             }, 1000)
         }
+    },
+    //计算一些属性
+    getters: {
+        filterList: state => state.list.filter(item => item > 5),
+        getSchoolName: state => state.user.userinfo.schoolname
     }
 })
 
