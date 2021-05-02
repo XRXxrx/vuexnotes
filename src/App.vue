@@ -6,12 +6,15 @@
     <hr />
     辅助函数 :{{ count }}
     <hr />
-    点击数据切换：{{ this.$store.state.count }}
-    <button @click="changeinfo">点击</button>
+    点击数据切换：{{ count }}
+    <!-- <button @click="$store.commit('add', 12)">点击</button> -->
+    <button @click="add(12)">点击</button>
   </div>
 </template>
 
 <script>
+//导入mapMutations
+import { mapMutations } from "vuex";
 // 导入mapState
 import { mapState } from "vuex";
 // 采用数组形式引入state属性
@@ -31,10 +34,13 @@ export default {
     // 利用延展运算符将导出的状态映射给计算属性
     ...mapState(["count", "name"]),
   },
+  // methods: {
+  //   add(data) {
+  //     this.$store.commit("add", data);
+  //   },
+  // },
   methods: {
-    changeinfo() {
-      this.$store.state.count++;
-    },
+    ...mapMutations(["add"]),
   },
 };
 </script>

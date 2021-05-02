@@ -16,6 +16,12 @@ const store = new Vuex.Store({
     state: {
         count: 2432,
         name: 'adadsa'
+    },
+    //用来修改state的同步函数
+    mutations: {
+        add(state, data) {
+            state.count += data
+        }
     }
 })
 
