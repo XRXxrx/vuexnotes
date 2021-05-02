@@ -25,23 +25,45 @@ const store = new Vuex.Store({
         }
     },
     //用来修改state的同步函数
-    mutations: {
-        add(state, data) {
-            state.count += data
-        }
-    },
+    // mutations: {
+    //     add(state, data) {
+    //         state.count += data
+    //     }
+    // },
     //接受异步回调函数
-    actions: {
-        anscyAdd(store, data) {
-            setTimeout(() => {
-                store.commit('add', data)
-            }, 1000)
-        }
-    },
+    // actions: {
+    //     anscyAdd(store, data) {
+    //         setTimeout(() => {
+    //             store.commit('add', data)
+    //         }, 1000)
+    //     }
+    // },
     //计算一些属性
     getters: {
-        filterList: state => state.list.filter(item => item > 5),
-        getSchoolName: state => state.user.userinfo.schoolname
+        // filterList: state => state.list.filter(item => item > 5),
+        // getSchoolName: state => state.user.userinfo.schoolname,
+        token: state => state.user.token,
+        name: state => state.setting.name
+    },
+    //模块化
+    modules: {
+        user: {
+            //模块高封闭性，只在本模块有用
+            namespaced: true,
+            state: {
+                token: 'sdfsdfds'
+            },
+            mutations: {
+                updateToken(state) {
+                    state.token = 4645654
+                }
+            }
+        },
+        setting: {
+            state: {
+                name: '士大夫顺丰速递'
+            }
+        }
     }
 })
 
