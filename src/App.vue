@@ -10,10 +10,18 @@
     <!-- <button @click="$store.commit('add', 12)">点击</button> -->
     <!-- <button @click="add(12)">点击</button> -->
     <button @click="abc(12)">点击</button>
+    <hr />
+    <button @click="$store.dispatch('anscyAdd', 23)">定时器1</button>
+    <hr />
+    <button @click="asyadd(12)">定时器2</button>
+    <hr />
+    <button @click="astadd(12)">定时器3</button>
   </div>
 </template>
 
 <script>
+//导入mapActions
+import { mapActions } from "vuex";
 //导入mapMutations
 import { mapMutations } from "vuex";
 // 导入mapState
@@ -44,6 +52,13 @@ export default {
     // ...mapMutations(["add"]),
     ...mapMutations({
       abc: "add",
+    }),
+    asyadd(data) {
+      this.$store.dispatch("anscyAdd", data);
+    },
+    // ...mapActions(["anscyAdd"]),
+    ...mapActions({
+      astadd: "anscyAdd",
     }),
   },
 };

@@ -22,6 +22,14 @@ const store = new Vuex.Store({
         add(state, data) {
             state.count += data
         }
+    },
+    //接受异步回调函数
+    actions: {
+        anscyAdd(store, data) {
+            setTimeout(() => {
+                store.commit('add', data)
+            }, 1000)
+        }
     }
 })
 
