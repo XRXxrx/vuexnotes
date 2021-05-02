@@ -8,7 +8,8 @@
     <hr />
     点击数据切换：{{ count }}
     <!-- <button @click="$store.commit('add', 12)">点击</button> -->
-    <button @click="add(12)">点击</button>
+    <!-- <button @click="add(12)">点击</button> -->
+    <button @click="abc(12)">点击</button>
   </div>
 </template>
 
@@ -40,7 +41,10 @@ export default {
   //   },
   // },
   methods: {
-    ...mapMutations(["add"]),
+    // ...mapMutations(["add"]),
+    ...mapMutations({
+      abc: "add",
+    }),
   },
 };
 </script>
